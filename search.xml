@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>各语言Hello World输出</title>
+      <link href="/2019/09/14/hello-world/"/>
+      <url>/2019/09/14/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>System.out.println(“hello world”);  –Java<br>Console.writeline(“hello world”);    –C#<br>printf(“hello world\n”);                   –C<br>cout&gt;&gt;”hello world\n”;                  –C++<br>print(“hello world”);                        –Python<br>document.write(“hello world”);       –JavaScript</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> teach </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> new </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>First Blog</title>
+      <link href="/2019/09/13/First/"/>
+      <url>/2019/09/13/First/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info.<br>If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a><br>or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> teach </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> new </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java入门教学</title>
+      <link href="/2019/09/13/Javar%E5%85%A5%E9%97%A8/"/>
+      <url>/2019/09/13/Javar%E5%85%A5%E9%97%A8/</url>
+      
+        <content type="html"><![CDATA[<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;<br>using System.Threading.Tasks;</p><p>namespace ConsoleApp4<br>{<br>    class Poker   //扑克牌类<br>    {<br>        string[] card =<br>        {<br>               “红桃A”, “红桃2”, “红桃3”,  “红桃4”, “红桃5”, “红桃6”, “红桃7”,<br>               “红桃8”, “红桃9”, “红桃10”, “红桃J”, “红桃Q”, “红桃K”,<br>               “黑桃A”, “黑桃2”, “黑桃3”,  “黑桃4”, “黑桃5”, “黑桃6”, “黑桃7”,<br>               “黑桃8”, “黑桃9”, “黑桃10”, “黑桃J”, “黑桃Q”, “黑桃K”,<br>               “梅花A”, “梅花2”, “梅花3”,  “梅花4”, “梅花5”, “梅花6”, “梅花7”,<br>               “梅花8”, “梅花9”, “梅花10”, “梅花J”, “梅花Q”, “梅花K”,<br>               “方片A”, “方片2”, “方片3”,  “方片4”, “方片5”, “方片6”, “方片7”,<br>               “方片8”, “方片9”, “方片10”, “方片J”, “方片Q”, “方片K”<br>        };<br>        public void show() //展示扑克牌<br>        {<br>            Console.WriteLine(“这是一幅扑克牌：”);<br>            for (int i = 0; i &lt; 52; i++)<br>            {<br>                Console.Write(card[i] + “ “);<br>                if (i % 13 == 0)<br>                    Console.Write(“\n”); //一行13张牌<br>            }<br>            Console.Write(“\n”);<br>        }<br>        public void randomcards()//洗牌<br>        {<br>            Random rand = new Random();<br>            for (int i = 0; i &lt; 52; i++)<br>            {<br>                int n = rand.Next(52);<br>                string temp;<br>                temp = card[n];<br>                card[n] = card[51 - n];<br>                card[51 - n] = temp;<br>            }<br>        }<br>        int position = 0; //发牌索引下标<br>        public String deal()//发牌，按顺序发牌，从下标0开始；<br>        {<br>            String c = card[position];<br>            position++;<br>            return c;<br>        }<br>    }<br>    class Player    //玩家类<br>    {<br>        public int shownumber(String num)   //计算牌的点数<br>        {<br>            char word = num[2];<br>            if (word == ‘A’)   //A的默认点数为11<br>            {<br>                return 11;<br>            }<br>            else if (word == ‘J’ || word == ‘Q’ || word == ‘K’ || word == ‘1’)  //这里的1表示word==10<br>            {<br>                return 10;<br>            }<br>            else<br>            {<br>                return (int)word - 48; //数字的AScall值-48<br>            }<br>        }<br>        public bool YorN(int sump) //判断玩家是否要牌<br>        {<br>            bool needornot = true;<br>            string anser = Console.ReadLine();<br>            if (anser == “yes”)<br>            {<br>                Console.WriteLine(“玩家继续要牌”);<br>                needornot = true;<br>            }<br>            else if (anser == “not”)<br>            {<br>                Console.WriteLine(“玩家不要牌了”);<br>                Console.WriteLine(“玩家的点数为：” + sump);<br>                needornot = false;<br>            }<br>            return needornot;<br>        }<br>    }<br>    class Computer  //庄家类<br>    {<br>        public int shownumber(string num)  //显示牌的点数<br>        {<br>            char word = num[2];<br>            if (word == ‘A’)  //A的默认点数为11<br>            {<br>                return 11;<br>            }<br>            else if (word == ‘J’ || word == ‘Q’ || word == ‘K’ || word == ‘1’)  //这里的1表示word==10<br>            {<br>                return 10;<br>            }<br>            else<br>            {<br>                return (int)word - 48; //数字的AScall值-48<br>            }<br>        }<br>        public bool YorN(int sumz, int sump) //判断庄家是否要牌<br>        {<br>            bool needornot = true;<br>            //如果庄家小于13，直接叫牌；如果&gt;13&lt;=18,庄家总点数小于玩家，叫牌，总点数大于玩家，不叫牌；如果&gt;15不叫牌<br>            if (sumz &lt;= 13)<br>            {<br>                Console.WriteLine(“庄家继续要牌”);//庄家的牌小于11，太小了，继续要牌<br>                needornot = true;<br>            }<br>            else if (sumz &lt;= 18)<br>            {<br>                if (sumz &lt; sump)<br>                {<br>                    Console.WriteLine(“庄家继续要牌”);<br>                    needornot = true;<br>                }<br>                else<br>                {<br>                    Console.WriteLine(“庄家不要牌了”);<br>                    needornot = false;<br>                }<br>            }<br>            else<br>            {<br>                Console.WriteLine(“庄家不要牌了”);<br>                needornot = false;<br>            }<br>            return needornot; //返回要牌情况<br>        }<br>    }<br>    public class StartGame<br>    {<br>        public void play()//开始游戏<br>        {<br>            int sump = 0; //初始化玩家的点数<br>            int sumz = 0; //初始化庄家的点数</p><pre><code>        string[] p = new string[8];//储存玩家的牌        string[] z = new string[8];//储存庄家的牌        bool pneed = true;//玩家是否要牌        bool zneed = true;//庄家是否要牌        bool pgo = true;//玩家能否继续要牌        bool zgo = true;//庄家能否继续要牌       /* bool p1judge = true;//检测玩家的牌1是否测试过        bool p2judge = true;//检测玩家的牌2是否测试过        bool z1judge = true;//检测庄家的牌1是否测试过        bool z2judge = true;//检测庄家的牌2是否测试过*/        Poker card = new Poker();//创建一幅扑克牌        card.show(); //展示牌        card.randomcards(); //洗牌        Player player = new Player();//创建一个玩家        Computer zhuangjia = new Computer();//创建一个庄家        int i = 1;   //每局的计数器i,每局自增1                       string str = &quot;是&quot;;   //用来获取用户输入        while (str == &quot;是&quot;)        {            var numofpA = 0;//记录玩家A的个数            var numofzA = 0;//记录庄家A的个数            Console.WriteLine();  //输出空行            Console.WriteLine(&quot;现在开始21点游戏！&quot;);            Console.WriteLine(&quot;第&quot; + i++.ToString() + &quot;局:&quot;);            Console.WriteLine(&quot;开始发牌：&quot;);            p[0] = card.deal();//给玩家第一张牌            z[0] = card.deal();//给庄家第一张牌            p[1] = card.deal();//给玩家第二张牌            z[1] = card.deal();//给庄家第二张牌            if (player.shownumber(p[0]) == 11) { numofpA++; }            if (player.shownumber(p[1]) == 11) { numofpA++; }            if (zhuangjia.shownumber(z[0]) == 11) { numofzA++; }            if (zhuangjia.shownumber(z[1]) == 11) { numofzA++; }            sump = player.shownumber(p[0]) + player.shownumber(p[1]); //计算玩家两张牌的总数            sumz = zhuangjia.shownumber(z[0]) + zhuangjia.shownumber(z[1]);//计算庄家两张牌的总数            Console.WriteLine(&quot;玩家第一张牌为：&quot; + p[0] + &quot; 第二张牌为：&quot; + p[1] + &quot;,玩家手中的A个数为：&quot; + numofpA);            Console.WriteLine(&quot;庄家第一张牌为：&quot; + z[0] + &quot; 第二张牌为：&quot; + z[1] + &quot;,庄家手中的A个数为：&quot; + numofzA);            var iswing = 3;    //0代表庄家赢，1代表玩家赢，2代表平手，3代表未判读输赢            //判断是否天胡            if (sump == 21)   //当玩家前两张牌21点时            {                if (sumz == 21)  //庄家也21点就平局                {                    iswing = 2;                }                else    //否则玩家赢                {                    iswing = 1;                }            }            if (sumz == 21)   //当庄家21点时            {                if (sump == 21)  //玩家也21点就平局                {                    iswing = 2;                }                else   //否则庄家赢                {                    iswing = 0;                }            }            //处理输赢            if (iswing == 1)            {                Console.WriteLine(&quot;你赢了了！21点，天胡！YOU WIN！！！&quot;);                //TODO:让用户输入是否进行下一次循环                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                //continue 英语继续的意思，在这里是关键字                //代表跳出当前这次循环，执行下一次循环                //continue之后，本次循环的语句不再执行                continue;            }            else if (iswing == 0)            {                Console.WriteLine(&quot;庄家赢了！21点，天胡！YOU LOSE！！！&quot;);                //TODO:让用户输入是否进行下一次循环                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                //continue 英语继续的意思，在这里是关键字                //代表跳出当前这次循环，执行下一次循环                //continue之后，本次循环的语句不再执行                continue;            }            else if (iswing == 2)            {                Console.ForegroundColor = ConsoleColor.White;                Console.WriteLine(&quot;都是21点，天胡！平局！！！&quot;);                //TODO:让用户输入是否进行下一次循环                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                //continue 英语继续的意思，在这里是关键字                //代表跳出当前这次循环，执行下一次循环                //continue之后，本次循环的语句不再执行                continue;            }            while (pgo || zgo)            {                //依次发牌问题                Console.WriteLine(&quot;玩家是否要牌？（输入yes或则no）&quot;);                pneed = player.YorN(sump);                int j = 1;                if (pneed &amp;&amp; pgo)                {                    j++;                                      p[j] = card.deal();//给玩家发第j张牌                    sump += player.shownumber(p[j]); //计算玩家的总数                    Console.WriteLine(&quot;玩家的第&quot; + j+1 + &quot;张牌是：&quot; + p[j]);                    if (player.shownumber(p[j]) == 11) { numofpA++; }                    pgo = true;                    if (sump &gt; 21)                    {                        if (numofpA &gt;= 1)  //如果玩家爆点但是手里有A，那么此时拿一张A作为1                        {                            sump = sump - 10;                            pgo = true;                        }                        else                        {                            pgo = false; //玩家爆点不能再取牌                                                       }                    }                    else                    {                        pgo = true;                    }                }                else                {                    pgo = false;  //玩家不需要取牌则玩家不能取牌了                }                Console.WriteLine(&quot;庄家是否要牌？（输入yes或则no）&quot;);                zneed = zhuangjia.YorN(sumz, sump);                int k = 1;                if (zneed &amp;&amp; zgo)                {                    k++;                    z[k] = card.deal(); //给庄家发第k张牌                    sumz += zhuangjia.shownumber(z[k]); //计算庄家的总数                    Console.WriteLine(&quot;庄家的第&quot; + k+1 + &quot;张牌是：&quot; + p[k]);                    if (zhuangjia.shownumber(z[k]) == 11) { numofzA++; }                    zgo = true;                    if (sumz &gt; 21)                    {                        if (numofzA &gt;= 1)                        {                            sumz = sumz - 10;                            zgo = true;                        }                        else                        {                            zgo = false; //庄家爆点，不能取牌                                                   }                    }                    else                    {                        zgo = zhuangjia.YorN(sumz, sump);  //小于21点再行一步判断是否要牌                    }                }                else                {                    zgo = false;  //庄家不需要取牌则不能取牌了                }            }            Console.WriteLine(&quot;庄家底牌是：&quot; + z[0]+&quot; &quot;+z[1]);            Console.WriteLine(&quot;玩家点数是：&quot; + sump + &quot;,庄家点数是：&quot; + sumz);            if (sump &gt;= sumz &amp;&amp; sump &lt;= 21 &amp;&amp; sumz &lt;= 21)  //玩家和庄家都没爆点时，玩家的点数大于庄家            {                Console.WriteLine(&quot;玩家点数大于庄家！玩家获胜！&quot;);                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                continue;            }            else if (sump &lt; sumz &amp;&amp; sump &lt;= 21 &amp;&amp; sumz &lt;= 21) //玩家和庄家都没爆点时，庄家的点数大于玩家            {                Console.WriteLine(&quot;庄家点数大于玩家！庄家获胜！&quot;);                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                continue;            }            else if (sump &gt; 21 &amp;&amp; sumz &lt;= 21) //玩家爆点庄家没爆            {                Console.WriteLine(&quot;玩家爆点啦！庄家胜利！&quot;);                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                continue;            }            else if (sumz &gt; 21 &amp;&amp; sump &lt;= 21) //庄家爆点玩家没爆            {                Console.WriteLine(&quot;庄家爆点啦！玩家胜利！&quot;);                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                continue;            }            else if (sumz &gt; 21 &amp;&amp; sump &gt; 21) //庄家和玩家都爆点            {                Console.WriteLine(&quot;庄家和玩家都爆点啦！平局！&quot;);                Console.WriteLine(&quot;是否进行下一局？(是/否)&quot;);                str = Console.ReadLine();                continue;            }        }    }}class Program{    public static void Main(string[] args)    {        //TODO：游戏描述信息        Console.ForegroundColor = ConsoleColor.White;  //设置控制台字体颜色        Console.WriteLine(&quot;##############################################&quot;);        Console.WriteLine(&quot;####     21点     ####&quot;);        Console.WriteLine(&quot;####     --谁最接近21点谁赢     ####&quot;);        Console.WriteLine(&quot;####     --根据提示选择是否叫牌     ####&quot;);        Console.WriteLine(&quot;##############################################&quot;);        var game = new StartGame();//创建游戏对象        game.play();        Console.ReadKey();    }}</code></pre><p>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> technology </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
